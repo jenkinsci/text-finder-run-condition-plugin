@@ -35,7 +35,7 @@
     <artifactId>text-finder-run-condition</artifactId>
     <packaging>hpi</packaging>
     <name>Text Finder Run Condition Plugin</name>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <description>Text finder condition for the Run Condition Plugin, to be used with http://wiki.jenkins-ci.org/display/JENKINS/Run+Condition+Plugin</description>
     <url>http://wiki.jenkins-ci.org/display/JENKINS/Text+Finder+Run+Condition</url>
 
@@ -54,7 +54,7 @@
         <developer>
             <id>cjo9900</id>
             <name>Chris Johnson</name>
-            <email></email>
+            <email />
         </developer>
     </developers>
 
