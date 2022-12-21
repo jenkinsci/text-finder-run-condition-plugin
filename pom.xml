@@ -29,18 +29,22 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>1.409</version>
+        <version>4.53</version>
+        <relativePath />
     </parent>
 
     <artifactId>text-finder-run-condition</artifactId>
     <packaging>hpi</packaging>
     <name>Text Finder Run Condition Plugin</name>
-    <version>0.2-SNAPSHOT</version>
+    <version>${changelist}</version>
     <description>Text finder condition for the Run Condition Plugin, to be used with http://wiki.jenkins-ci.org/display/JENKINS/Run+Condition+Plugin</description>
-    <url>http://wiki.jenkins-ci.org/display/JENKINS/Text+Finder+Run+Condition</url>
+    <url>https://plugins.jenkins.io/text-finder-run-condition/</url>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <changelist>999999-SNAPSHOT</changelist>
+        <jenkins.version>2.361.4</jenkins.version>
+        <!-- TODO fix violations -->
+        <spotbugs.threshold>High</spotbugs.threshold>
     </properties>
 
     <licenses>
@@ -62,7 +66,7 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>run-condition</artifactId>
-            <version>0.10</version>
+            <version>1.5</version>
         </dependency>
     </dependencies>
 
@@ -70,6 +74,7 @@
         <url>https://github.com/jenkinsci/text-finder-run-condition-plugin</url>
         <connection>scm:git:git://github.com/jenkinsci/text-finder-run-condition-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/text-finder-run-condition-plugin.git</developerConnection>
+        <tag>${scmTag}</tag>
     </scm>
 
     <issueManagement>
@@ -77,25 +82,17 @@
         <url>http://issues.jenkins-ci.org/</url>
     </issueManagement>
 
-    <distributionManagement>
-        <repository>
-            <id>maven.jenkins-ci.org</id>
-            <url>http://maven.jenkins-ci.org:8081/content/repositories/releases/</url>
-        </repository>
-    </distributionManagement>
-
-
     <repositories>
         <repository>
             <id>repo.jenkins-ci.org</id>
-            <url>http://repo.jenkins-ci.org/public/</url>
+            <url>https://repo.jenkins-ci.org/public/</url>
         </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
             <id>repo.jenkins-ci.org</id>
-            <url>http://repo.jenkins-ci.org/public/</url>
+            <url>https://repo.jenkins-ci.org/public/</url>
         </pluginRepository>
     </pluginRepositories>
 </project>
