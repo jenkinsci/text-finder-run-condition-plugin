@@ -23,6 +23,7 @@
  */
 package org.jenkins_ci.plugins.text_finder_run_condition;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import hudson.Extension;
 import hudson.FilePath.FileCallable;
 import hudson.model.AbstractBuild;
@@ -43,6 +44,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.tools.ant.DirectoryScanner;
 import org.apache.tools.ant.types.FileSet;
 import org.jenkins_ci.plugins.run_condition.common.AlwaysPrebuildRunCondition;
+import org.jenkinsci.remoting.RoleChecker;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
@@ -63,9 +65,6 @@ public class TextFinderCondition extends AlwaysPrebuildRunCondition implements S
 
     /**
      * Data bound constructor taking a condition and exclusive cause
-     *
-     * @param condition         Build condition to use
-     * @param exclusiveCause    flag to indicate whether builds started by multiple causes are allowed.
      */
     @DataBoundConstructor
     public TextFinderCondition(String fileSet, String regexp, boolean checkConsoleOutput) {
@@ -121,6 +120,11 @@ public class TextFinderCondition extends AlwaysPrebuildRunCondition implements S
             if (fileSet != null) {
                 foundText |= build.getWorkspace().act(new FileCallable<Boolean>() {
 
+                    @Override
+                    public void checkRoles(RoleChecker checker) throws SecurityException {
+                    }
+
+                    @SuppressFBWarnings(value = "DM_DEFAULT_ENCODING", justification = "TODO triage")
                     public Boolean invoke(File ws, VirtualChannel channel) throws IOException {
                         PrintStream logger = new PrintStream(ros);
 
@@ -180,6 +184,7 @@ public class TextFinderCondition extends AlwaysPrebuildRunCondition implements S
      * return immediately as soon as the first hit is
      * found as there is no need to check any further
      */
+    @SuppressFBWarnings(value = "DM_DEFAULT_ENCODING", justification = "TODO triage")
     private boolean checkFile(File f, Pattern pattern, PrintStream logger) {
 
         boolean foundText = false;
